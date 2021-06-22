@@ -30,6 +30,9 @@ then
   echo "::set-output name=exitcode::$GITLEAKS_RESULT"
   echo "----------------------------------"
   echo "$CAPTURE_OUTPUT"
+  CAPTURE_OUTPUT="${CAPTURE_OUTPUT//'%'/'%25'}"
+  CAPTURE_OUTPUT="${CAPTURE_OUTPUT//$'\n'/'%0A'}"
+  CAPTURE_OUTPUT="${CAPTURE_OUTPUT//$'\r'/'%0D'}"
   echo "::set-output name=result::$CAPTURE_OUTPUT"
   echo "----------------------------------"
   echo -e $DONATE_MSG
