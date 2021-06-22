@@ -15,7 +15,7 @@ DONATE_MSG="👋 maintaining gitleaks takes a lot of work so consider sponsoring
 if [ "$GITHUB_EVENT_NAME" = "push" ]
 then
   echo gitleaks --path=$GITHUB_WORKSPACE --verbose --redact $CONFIG
-  CAPTURE_OUTPUT=$(gitleaks --path=$GITHUB_WORKSPACE --verbose --redact $CONFIG)
+  CAPTURE_OUTPUT=$(gitleaks --path=$GITHUB_WORKSPACE --verbose  --report=output.json --redact $CONFIG)
 elif [ "$GITHUB_EVENT_NAME" = "pull_request" ]
 then 
   git --git-dir="$GITHUB_WORKSPACE/.git" log --left-right --cherry-pick --pretty=format:"%H" remotes/origin/$GITHUB_BASE_REF... > commit_list.txt
