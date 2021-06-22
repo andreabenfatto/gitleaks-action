@@ -30,6 +30,7 @@ then
   echo "::set-output name=exitcode::$GITLEAKS_RESULT"
   echo "----------------------------------"
   echo "$CAPTURE_OUTPUT"
+  echo "$CAPTURE_OUTPUT" > output.json
   echo "::set-output name=result::$CAPTURE_OUTPUT"
   echo "----------------------------------"
   echo -e $DONATE_MSG
