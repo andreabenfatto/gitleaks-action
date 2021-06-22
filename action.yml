@@ -8,6 +8,10 @@ inputs:
     description: 'Path to config (relative to $GITHUB_WORKSPACE)'
     required: false
     default: '.github/.gitleaks.toml'
+  report:
+    description: 'Path where report will be saved (relative to $GITHUB_WORKSPACE)'
+    required: false
+    default: 'output.json'
 outputs:
   result: # id of output
     description: 'Gitleaks log output'
@@ -17,4 +21,5 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.config-path }}
+    - CONFIG_PATH=${{ inputs.config-path }}
+    - REPORT=${{ inputs.report }}
